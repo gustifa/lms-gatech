@@ -1,13 +1,18 @@
 @extends('frontend.dashboard.user_dashboard')
 
 @section('userdashboard')
+
+@php
+    $id = Auth::user()->id;
+    $profileData = App\Models\User::find($id);
+@endphp
 <div class="flex-wrap mb-5 breadcrumb-content d-flex align-items-center justify-content-between">
     <div class="media media-card align-items-center">
         <div class="rounded-full media-img media--img media-img-md">
-            <img class="rounded-full" src="{{asset('frontend/images/small-avatar-1.jpg')}}" alt="Student thumbnail image">
+            <img class="rounded-full" src="{{(!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Student thumbnail image">
         </div>
         <div class="media-body">
-            <h2 class="section__title fs-30">Howdy, Tim Buchalka</h2>
+            <h2 class="section__title fs-30">Hello, {{$profileData->name}}</h2>
             <div class="pt-2 rating-wrap d-flex align-items-center">
                 <div class="review-stars">
                     <span class="rating-number">4.4</span>

@@ -1,17 +1,17 @@
-<header class="header-menu-area bg-white">
-    <div class="header-top pr-150px pl-150px border-bottom border-bottom-gray py-1">
+<header class="bg-white header-menu-area">
+    <div class="py-1 header-top pr-150px pl-150px border-bottom border-bottom-gray">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="header-widget">
-                        <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14">
-                            <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-phone mr-1"></i><a href="tel:00123456789"> (00) 123 456 789</a></li>
-                            <li class="d-flex align-items-center"><i class="la la-envelope-o mr-1"></i><a href="mailto:contact@aduca.com"> contact@aduca.com</a></li>
+                        <ul class="flex-wrap generic-list-item d-flex align-items-center fs-14">
+                            <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-phone"></i><a href="tel:00123456789"> (00) 123 456 789</a></li>
+                            <li class="d-flex align-items-center"><i class="mr-1 la la-envelope-o"></i><a href="mailto:contact@aduca.com"> contact@aduca.com</a></li>
                         </ul>
                     </div><!-- end header-widget -->
                 </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">
-                    <div class="header-widget d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="flex-wrap header-widget d-flex align-items-center justify-content-end">
                         <div class="theme-picker d-flex align-items-center">
                             <button class="theme-picker-btn dark-mode-btn" title="Dark mode">
                                 <svg id="moon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -32,16 +32,16 @@
                                 </svg>
                             </button>
                         </div>
-                        <ul class="generic-list-item d-flex flex-wrap align-items-center fs-14 border-left border-left-gray pl-3 ml-3">
-                            <li class="d-flex align-items-center pr-3 mr-3 border-right border-right-gray"><i class="la la-sign-in mr-1"></i><a href="login.html"> Login</a></li>
-                            <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a href="sign-up.html"> Register</a></li>
+                        <ul class="flex-wrap pl-3 ml-3 generic-list-item d-flex align-items-center fs-14 border-left border-left-gray">
+                            <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i class="mr-1 la la-sign-in"></i><a href="{{route('login')}}"> Login</a></li>
+                            <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a href="{{route('register')}}"> Register</a></li>
                         </ul>
                     </div><!-- end header-widget -->
                 </div><!-- end col-lg-6 -->
             </div><!-- end row -->
         </div><!-- end container-fluid -->
     </div><!-- end header-top -->
-    <div class="header-menu-content pr-150px pl-150px bg-white">
+    <div class="bg-white header-menu-content pr-150px pl-150px">
         <div class="container-fluid">
             <div class="main-menu-content">
                 <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
@@ -50,13 +50,13 @@
                         <div class="logo-box">
                             <a href="index.html" class="logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
                             <div class="user-btn-action">
-                                <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2" data-toggle="tooltip" data-placement="top" title="Search">
+                                <div class="mr-2 shadow-sm search-menu-toggle icon-element icon-element-sm" data-toggle="tooltip" data-placement="top" title="Search">
                                     <i class="la la-search"></i>
                                 </div>
-                                <div class="off-canvas-menu-toggle cat-menu-toggle icon-element icon-element-sm shadow-sm mr-2" data-toggle="tooltip" data-placement="top" title="Category menu">
+                                <div class="mr-2 shadow-sm off-canvas-menu-toggle cat-menu-toggle icon-element icon-element-sm" data-toggle="tooltip" data-placement="top" title="Category menu">
                                     <i class="la la-th-large"></i>
                                 </div>
-                                <div class="off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="top" title="Main menu">
+                                <div class="shadow-sm off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm" data-toggle="tooltip" data-placement="top" title="Main menu">
                                     <i class="la la-bars"></i>
                                 </div>
                             </div>
@@ -190,8 +190,8 @@
                                 </ul>
                             </div><!-- end menu-category -->
                             <form method="post">
-                                <div class="form-group mb-0">
-                                    <input class="form-control form--control pl-3" type="text" name="search" placeholder="Search for anything">
+                                <div class="mb-0 form-group">
+                                    <input class="pl-3 form-control form--control" type="text" name="search" placeholder="Search for anything">
                                     <span class="la la-search search-icon"></span>
                                 </div>
                             </form>
@@ -269,9 +269,9 @@
                                                 <li class="col-lg-3">
                                                     <div class="menu-banner position-relative h-100">
                                                         <div class="overlay rounded-rounded opacity-4"></div>
-                                                        <div class="menu-banner-content p-4 position-absolute bottom-0 left-0">
-                                                            <h4 class="fs-20 font-weight-bold pb-3 text-white">30 days free trail for new users</h4>
-                                                            <a href="sign-up.html" class="btn theme-btn theme-btn-sm theme-btn-white">Start Learning <i class="la la-arrow-right icon ml-1"></i></a>
+                                                        <div class="bottom-0 left-0 p-4 menu-banner-content position-absolute">
+                                                            <h4 class="pb-3 text-white fs-20 font-weight-bold">30 days free trail for new users</h4>
+                                                            <a href="sign-up.html" class="btn theme-btn theme-btn-sm theme-btn-white">Start Learning <i class="ml-1 la la-arrow-right icon"></i></a>
                                                         </div>
                                                         <img src="{{asset('images/menu-banner-img.jpg" alt="menu banner image" class="w-100 h-100 rounded-rounded">
                                                     </div>
@@ -291,7 +291,7 @@
                                     </li>
                                 </ul><!-- end ul -->
                             </nav><!-- end main-menu -->
-                            <div class="shop-cart mr-4">
+                            <div class="mr-4 shop-cart">
                                 <ul>
                                     <li>
                                         <p class="shop-cart-btn d-flex align-items-center">
@@ -305,7 +305,7 @@
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
-                                                    <span class="d-block lh-18 py-1">Kamran Ahmed</span>
+                                                    <span class="py-1 d-block lh-18">Kamran Ahmed</span>
                                                     <p class="text-black font-weight-semi-bold lh-18">$12.99 <span class="before-price fs-14">$129.99</span></p>
                                                 </div>
                                             </li>
@@ -315,7 +315,7 @@
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
-                                                    <span class="d-block lh-18 py-1">Kamran Ahmed</span>
+                                                    <span class="py-1 d-block lh-18">Kamran Ahmed</span>
                                                     <p class="text-black font-weight-semi-bold lh-18">$12.99 <span class="before-price fs-14">$129.99</span></p>
                                                 </div>
                                             </li>
@@ -325,14 +325,14 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <a href="shopping-cart.html" class="btn theme-btn w-100">Got to cart <i class="la la-arrow-right icon ml-1"></i></a>
+                                                <a href="shopping-cart.html" class="btn theme-btn w-100">Got to cart <i class="ml-1 la la-arrow-right icon"></i></a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </div><!-- end shop-cart -->
                             <div class="nav-right-button">
-                                <a href="admission.html" class="btn theme-btn d-none d-lg-inline-block"><i class="la la-user-plus mr-1"></i> Admission</a>
+                                <a href="admission.html" class="btn theme-btn d-none d-lg-inline-block"><i class="mr-1 la la-user-plus"></i> Admission</a>
                             </div><!-- end nav-right-button -->
                         </div><!-- end menu-wrapper -->
                     </div><!-- end col-lg-10 -->
@@ -341,7 +341,7 @@
         </div><!-- end container-fluid -->
     </div><!-- end header-menu-content -->
     <div class="off-canvas-menu custom-scrollbar-styled main-off-canvas-menu">
-        <div class="off-canvas-menu-close main-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
+        <div class="shadow-sm off-canvas-menu-close main-menu-close icon-element icon-element-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
             <i class="la la-times"></i>
         </div><!-- end off-canvas-menu-close -->
         <ul class="generic-list-item off-canvas-menu-list pt-90px">
@@ -421,7 +421,7 @@
         </ul>
     </div><!-- end off-canvas-menu -->
     <div class="off-canvas-menu custom-scrollbar-styled category-off-canvas-menu">
-        <div class="off-canvas-menu-close cat-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
+        <div class="shadow-sm off-canvas-menu-close cat-menu-close icon-element icon-element-sm" data-toggle="tooltip" data-placement="left" title="Close menu">
             <i class="la la-times"></i>
         </div><!-- end off-canvas-menu-close -->
         <ul class="generic-list-item off-canvas-menu-list pt-90px">
@@ -545,13 +545,13 @@
     </div><!-- end off-canvas-menu -->
     <div class="mobile-search-form">
         <div class="d-flex align-items-center">
-            <form method="post" class="flex-grow-1 mr-3">
-                <div class="form-group mb-0">
-                    <input class="form-control form--control pl-3" type="text" name="search" placeholder="Search for anything">
+            <form method="post" class="mr-3 flex-grow-1">
+                <div class="mb-0 form-group">
+                    <input class="pl-3 form-control form--control" type="text" name="search" placeholder="Search for anything">
                     <span class="la la-search search-icon"></span>
                 </div>
             </form>
-            <div class="search-bar-close icon-element icon-element-sm shadow-sm">
+            <div class="shadow-sm search-bar-close icon-element icon-element-sm">
                 <i class="la la-times"></i>
             </div><!-- end off-canvas-menu-close -->
         </div>
