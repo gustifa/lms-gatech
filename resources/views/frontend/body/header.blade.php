@@ -279,7 +279,7 @@
                                                             <h4 class="pb-3 text-white fs-20 font-weight-bold">30 days free trail for new users</h4>
                                                             <a href="sign-up.html" class="btn theme-btn theme-btn-sm theme-btn-white">Start Learning <i class="ml-1 la la-arrow-right icon"></i></a>
                                                         </div>
-                                                        <img src="{{asset('images/menu-banner-img.jpg" alt="menu banner image" class="w-100 h-100 rounded-rounded">
+                                                        <img src="{{asset('images/menu-banner-img.jpg')}}" alt="menu banner image" class="w-100 h-100 rounded-rounded">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -307,7 +307,7 @@
                                         <ul class="cart-dropdown-menu">
                                             <li class="media media-card">
                                                 <a href="shopping-cart.html" class="media-img">
-                                                    <img src="{{asset('images/small-img.jpg" alt="Cart image">
+                                                    <img src="{{asset('images/small-img.jpg')}}" alt="Cart image">
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
@@ -317,7 +317,7 @@
                                             </li>
                                             <li class="media media-card">
                                                 <a href="shopping-cart.html" class="media-img">
-                                                    <img src="{{asset('images/small-img.jpg" alt="Cart image">
+                                                    <img src="{{asset('images/small-img.jpg')}}" alt="Cart image">
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>

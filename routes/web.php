@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\Backend\CategoryController;
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -38,6 +40,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     Route::get('/admin/change/password', [AdminController::class, 'adminPassword'])->name('admin.password');
     Route::post('/admin/update/password', [AdminController::class, 'adminUpdatePassword'])->name('admin.update.password');
+
+    //Route Category
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('/all/category', 'AllCategory')->name('all.category');
+    });
 });
 
 // Instructor Group Middleware
