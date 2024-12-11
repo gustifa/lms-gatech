@@ -61,60 +61,62 @@
     <div class="tab-pane fade show active" id="edit-profile" role="tabpanel" aria-labelledby="edit-profile-tab">
         <div class="setting-body">
             <h3 class="pb-4 fs-17 font-weight-semi-bold">Edit Profile</h3>
+            <form method="post" action="{{route('user.profile.update')}}" class="row pt-40px" enctype="multipart/form-data">
+                @csrf
             <div class="media media-card align-items-center">
                 <div class="mr-4 media-img media-img-lg bg-gray">
                     <img class="mr-3" src="{{(!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="avatar image">
                 </div>
                 <div class="media-body">
                     <div class="file-upload-wrap file-upload-wrap-2">
-                        <input type="file" name="files[]" class="multi file-upload-input with-preview" multiple>
+                        <input type="file" name="photo" class="multi file-upload-input with-preview" multiple>
                         <span class="file-upload-text"><i class="mr-2 la la-photo"></i>Upload a Photo</span>
                     </div><!-- file-upload-wrap -->
                     <p class="fs-14">Max file size is 5MB, Minimum dimension: 200x200 And Suitable files are .jpg & .png</p>
                 </div>
             </div><!-- end media -->
-            <form method="post" class="row pt-40px">
+            
                 <div class="input-box col-lg-6">
-                    <label class="label-text">First Name</label>
+                    <label class="label-text">Name</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="text" name="text" value="Alex">
+                        <input class="form-control form--control" type="text" name="name" value="{{$profileData->name}}">
                         <span class="la la-user input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
                 <div class="input-box col-lg-6">
-                    <label class="label-text">Last Name</label>
+                    <label class="label-text">Address</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="text" name="text" value="Smith">
+                        <input class="form-control form--control" type="text" name="address" value="{{$profileData->address}}">
                         <span class="la la-user input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
                 <div class="input-box col-lg-6">
-                    <label class="label-text">User Name</label>
+                    <label class="label-text">Username</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="text" name="text" value="alex-admin">
+                        <input class="form-control form--control" type="text" name="username" value="{{$profileData->username}}">
                         <span class="la la-user input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
                 <div class="input-box col-lg-6">
                     <label class="label-text">Email Address</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="email" name="email" value="alexsmith@gmail.com">
+                        <input class="form-control form--control" type="email" name="email" value="{{$profileData->email}}">
                         <span class="la la-envelope input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
                 <div class="input-box col-lg-12">
                     <label class="label-text">Phone Number</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="text" name="text" value="(91) 7547 622250">
+                        <input class="form-control form--control" type="text" name="phone" value="{{$profileData->phone}}">
                         <span class="la la-phone input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
-                <div class="input-box col-lg-12">
+                {{-- <div class="input-box col-lg-12">
                     <label class="label-text">Bio</label>
                     <div class="form-group">
                         <textarea class="pl-3 form-control form--control user-text-editor" name="message">Hello! I am Alex Smith Washington area graphic designer with over 6 years of graphic design experience. I specialize in designing infographics, icons, brochures, and flyers</textarea>
                     </div>
-                </div><!-- end input-box -->
+                </div><!-- end input-box --> --}}
                 <div class="py-2 input-box col-lg-12">
                     <button class="btn theme-btn">Save Changes</button>
                 </div><!-- end input-box -->
@@ -126,25 +128,29 @@
     <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
         <div class="setting-body">
             <h3 class="pb-4 fs-17 font-weight-semi-bold">Change Password</h3>
-            <form method="post" class="row">
+            <form method="post" action="{{route('user.password.update')}}" enctype="multipart/form-data">
+                @csrf
                 <div class="input-box col-lg-4">
                     <label class="label-text">Old Password</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="text" name="text" placeholder="Old Password">
+                        <input class="form-control form--control" type="password" name="old_password" placeholder="Old Password" class="form-control" @error('old_password') is-invalid @enderror id="old_password">
+                        @error('old_password')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
                         <span class="la la-lock input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
                 <div class="input-box col-lg-4">
                     <label class="label-text">New Password</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="text" name="text" placeholder="New Password">
+                        <input class="form-control form--control" type="password" name="new_password" placeholder="New Password">
                         <span class="la la-lock input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
                 <div class="input-box col-lg-4">
                     <label class="label-text">Confirm New Password</label>
                     <div class="form-group">
-                        <input class="form-control form--control" type="text" name="text" placeholder="Confirm New Password">
+                        <input class="form-control form--control" type="password" name="new_password_confirmation" placeholder="Confirm New Password">
                         <span class="la la-lock input-icon"></span>
                     </div>
                 </div><!-- end input-box -->
