@@ -15,7 +15,11 @@ class InstructorController extends Controller
 
     public function InstructorLogout(){
         Auth::guard('web')->logout();
-        return redirect('/login');
+        return redirect('/instructor/login');
+    }
+
+    public function InstructorLogin(){
+        return view('instructor.instructor_login');
     }
 
     public function InstructorProfile(){

@@ -87,5 +87,39 @@ class AdminController extends Controller
 
         return back()->with($notification);
 
+
+        
+
+    }
+
+    /* ------------------------Become Instructor ------------------------ */
+
+    public function BecomeInstructor(){
+        return view('frontend.instructor.reg_instructor');
+    }
+
+    public function BecomeInstructorRegister(Request $request){
+        User::insert([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'password' => Hash::make($request->password),
+            'role' => 'instructor',
+            'status' => 0,
+
+        ]);
+
+
+        $notification = array(
+            'message' => 'Inscructor Inserted Successfully',
+            'alert-type' => 'success',
+
+
+        );
+
+
+        return redirect()->route('instructor.login')->with($notification);
     }
 }
