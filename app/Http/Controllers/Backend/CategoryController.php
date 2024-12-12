@@ -54,4 +54,41 @@ class CategoryController extends Controller
         $category = Category::find($id);
         return view('admin.backend.category.edit_category', compact('category'));
     }
+
+    public function UpdateCategory(Request $request){
+        $category_id = $request->id;
+        if($request->file('image')){
+            $manager = new ImageManager(new Driver());
+            $image_gen = hexdec(uniqid()).'.'.$request->file('image')->getClientOriginalExtension();
+            $img = $manager->read($request->file('image'));
+            $img = $img->resize(370,246);
+            $img->toPng()->save(base_path('public/upload/category/'.$image_gen));
+            $save_url = 'upload/category/'.$image_gen;
+
+            Category::find($category_id)->update([
+                'category_name' => $request->category_name,
+                'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
+                'image' => $save_url,
+            ]);
+
+            $notification = array(
+                'message' => 'Catgeory Update Successfully',
+                'alert-type' => 'success',
+            );
+            return redirect()->route('all.category')->with($notification);
+         }else{
+            Category::find($category_id)->update([
+                'category_name' => $request->category_name,
+                'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
+            ]);
+
+            $notification = array(
+                'message' => 'Catgeory Update Successfully',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->route('all.category')->with($notification);
+         }
+
+    }
 }

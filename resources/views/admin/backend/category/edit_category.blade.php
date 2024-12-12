@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="gap-3 d-md-flex d-grid align-items-center">
                                 <button type="submit" class="px-4 btn btn-primary">Simpan</button>
-                                <button type="button" class="px-4 btn btn-light">Reset</button>
+                                {{-- <button type="button" class="px-4 btn btn-light">Reset</button> --}}
                             </div>
                         </div>
                     </form>
