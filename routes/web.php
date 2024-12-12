@@ -47,6 +47,13 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/change/password', [AdminController::class, 'adminPassword'])->name('admin.password');
     Route::post('/admin/update/password', [AdminController::class, 'adminUpdatePassword'])->name('admin.update.password');
 
+
+    /* Instructor Active */
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/instructor/all', 'AllInstructor')->name('all.instructor');
+        Route::get('/instructor/add', 'AddInstructor')->name('add.instructor');
+    });
+
     //Route Category
     Route::controller(CategoryController::class)->group(function(){
         Route::get('/category/all', 'AllCategory')->name('all.category');

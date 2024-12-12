@@ -63,6 +63,20 @@
                 </li>
             </ul>
         </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Manage Insturctor</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('all.instructor')}}"><i class='bx bx-radio-circle'></i>All Instructor</a>
+                </li>
+                <li> <a href="{{route('add.instructor')}}"><i class='bx bx-radio-circle'></i>Add Instructor</a>
+                </li>
+            </ul>
+        </li>
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="widgets.html">
