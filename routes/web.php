@@ -50,6 +50,19 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/category/update', 'UpdateCategory')->name('update.category');
         Route::get('/category/delete/{id}', 'DeleteCategory')->name('delete.category');
     });
+
+    // Sub Category
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('/subcategory/all', 'AllSubCategory')->name('all.subcategory');
+        Route::get('/subcategory/add', 'AddSubCategory')->name('add.subcategory');
+        Route::post('/subcategory/store', 'StoreSubCategory')->name('store.subcategory');
+        Route::get('/subcategory/edit/{id}', 'EditSubCategory')->name('edit.subcategory');
+        Route::post('/subcategory/update', 'UpdateSubCategory')->name('update.subcategory');
+        Route::get('/subcategory/delete/{id}', 'DeleteSubCategory')->name('delete.subcategory');
+
+    });
+
+
 });
 
 // Instructor Group Middleware

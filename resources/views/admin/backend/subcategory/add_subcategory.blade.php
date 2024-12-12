@@ -5,13 +5,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-        <div class="breadcrumb-title pe-3">Category</div>
+        <div class="breadcrumb-title pe-3">SubCategory</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('all.category')}}"><i class="bx bx-home-alt"></i></a>
+                    <li class="breadcrumb-item"><a href="{{route('all.subcategory')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Add Category</li>
+                    <li class="breadcrumb-item active" aria-current="page">Add SubCategory</li>
                 </ol>
             </nav>
         </div>
@@ -36,24 +36,25 @@
             <hr/>
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('store.category')}}" enctype="multipart/form-data">
+                    <form id="myForm" method="post" action="{{route('store.subcategory')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-group">
                             <label class="form-label">Category Name:</label>
-                            <input type="text" class="form-control" name="category_name">
-                        </div>
+                            <select name="category_id" class="form-select select2-hidden-accessible" id="single-select-field" data-placeholder="Choose one thing" data-select2-id="select2-data-single-select-field" tabindex="-1" aria-hidden="true">
+                                <option disabled data-select2-id="select2-data-2-747t">Select Category</option>
+                                @foreach ($category as $item )
+                                <option data-select2-id="select2-data-77-kb3z" value="{{$item->id}}">{{$item->category_name}}</option>
+                                @endforeach
 
+
+                            </select>
+                        </div>
                         <div class="mb-3 form-group">
-                            <label class="form-label">Input File:</label>
-                            <input type="file" class="form-control" name="image" id="image">
-
+                            <label class="form-label">SubCategory Name:</label>
+                            <input type="text" class="form-control" name="subcategory_name">
                         </div>
                         <div class="mb-3">
-                            <img id ="showImage"src="{{(!empty($profileData->photo)) ? url('upload/admin_images/'.$profileData->photo): url('upload/no_image.jpg')}}" alt="Admin" class="p-1 rounded-circle bg-primary" width="150">
-                        </div>
-
-                        <div class="mb-3">
-                            <button type="submit" class="px-5 btn btn-primary">Save Category</button>
+                            <button type="submit" class="px-5 btn btn-primary">Save SubCategory</button>
                         </div>
                     </form>
                 </div>
