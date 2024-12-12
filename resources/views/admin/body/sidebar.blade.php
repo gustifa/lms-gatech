@@ -37,7 +37,7 @@
                 </li>
                 <li> <a href="{{route('add.category')}}"><i class='bx bx-radio-circle'></i>Add Category</a>
                 </li>
-                <li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
+                {{-- <li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
                 </li>
                 <li> <a href="app-contact-list.html"><i class='bx bx-radio-circle'></i>Contatcs</a>
                 </li>
@@ -46,7 +46,7 @@
                 <li> <a href="app-invoice.html"><i class='bx bx-radio-circle'></i>Invoice</a>
                 </li>
                 <li> <a href="app-fullcalender.html"><i class='bx bx-radio-circle'></i>Calendar</a>
-                </li>
+                </li> --}}
             </ul>
         </li>
 
