@@ -65,6 +65,7 @@ class CategoryController extends Controller
             $img->toPng()->save(base_path('public/upload/category/'.$image_gen));
             $save_url = 'upload/category/'.$image_gen;
 
+
             Category::find($category_id)->update([
                 'category_name' => $request->category_name,
                 'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
@@ -83,12 +84,27 @@ class CategoryController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Catgeory Update Successfully',
+                'message' => 'Category Update Successfully',
                 'alert-type' => 'success',
             );
 
             return redirect()->route('all.category')->with($notification);
          }
 
+    }
+
+    public function DeleteCategory($id){
+        $item = Category::find($id);
+        $img = $item->image;
+        uniqid($img);
+
+        Category::find($id)->delete();
+
+        $notification = array(
+            'message' => 'Category Delete Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.category')->with($notification);
     }
 }
