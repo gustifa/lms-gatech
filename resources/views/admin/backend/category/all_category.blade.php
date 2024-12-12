@@ -38,20 +38,21 @@
                             <th>No</th>
                             <th>Category Image</th>
                             <th>Category Name</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th style="width: 20px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($category as $key=> $item)
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>Edinburgh</td>
+                            <td>
+                                <img src="{{asset($item->image)}}" alt="" style="height: 70px" width="70px" >
+                            </td>
                             <td>{{$item->category_name}}</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td>
+                                <a href="{{route('edit.category',$item->id)}}" class="px-5 btn btn-primary">Edit</a>
+                                <a href="{{route('delete.category',$item->id)}}" id="delete" class="px-5 btn btn-danger">Delete</a>
+                            </td>
                         </tr>
                         @endforeach
                         

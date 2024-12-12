@@ -35,7 +35,7 @@
             <hr/>
             <div class="card">
                 <div class="card-body">
-                    <form id="myForm" method="post" action="{{route('store.category')}}">
+                    <form id="myForm" method="post" action="{{route('store.category')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 form-group">
                             <label class="form-label">Category Name:</label>
