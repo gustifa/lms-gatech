@@ -55,6 +55,13 @@
                                 </div>
                             </div><!-- end input-box -->
                             <div class="input-box">
+                                <label class="label-text">Username</label>
+                                <div class="form-group">
+                                    <input class="form-control form--control" type="text" name="username" id="username" placeholder="Username">
+                                    <span class="la la-user input-icon"></span>
+                                </div>
+                            </div><!-- end input-box -->
+                            <div class="input-box">
                                 <label class="label-text">Email Address</label>
                                 <div class="form-group">
                                     <input class="form-control form--control" type="email" name="email" id="email" placeholder="Enter email address">

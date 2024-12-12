@@ -49,4 +49,9 @@ class CategoryController extends Controller
          }
 
     }
+
+    public function EditCategory($id){
+        $category = Category::find($id);
+        return view('admin.backend.category.edit_category', compact('category'));
+    }
 }

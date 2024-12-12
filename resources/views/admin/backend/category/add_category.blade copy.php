@@ -28,7 +28,7 @@
     </div>
     <!--end breadcrumb-->
     <div class="row">
-        <div class="col-xl-9 mx-auto">
+        <div class="col-xl-12 mx-auto">
             <h6 class="mb-0 text-uppercase">Add Category</h6>
             <hr/>
             <div class="card">

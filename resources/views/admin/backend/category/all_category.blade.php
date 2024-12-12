@@ -35,8 +35,8 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Category Image</th>
+                            <th style="width: 5px;">No</th>
+                            <th style="width: 70px;">Category Image</th>
                             <th>Category Name</th>
                             <th style="width: 20px;">Action</th>
                         </tr>
