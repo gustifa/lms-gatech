@@ -137,6 +137,7 @@ class AdminController extends Controller
             $user->status =  $isChecked;
             $user->save();
         }
-        return response()->json(['message', 'User Succesfully Update']);
+        return response()->json(['message'=>'User Succesfully Update']);
+
     }
 }

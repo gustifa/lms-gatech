@@ -97,22 +97,24 @@
             var userId = $(this).data('user-id');
             var isChecked = $(this).is(':checked');
 
-            // Send Ajax Request to Update Status
+            // send an ajax request to update status
+
             $.ajax({
-                url: {{route('update.user.status')}},
+                url: "{{ route('update.user.status') }}",
                 method: "POST",
                 data: {
                     user_id : userId,
                     is_checked: isChecked ? 1 : 0,
-                    _token: "{{csrf_token}}",
+                    _token: "{{ csrf_token() }}"
                 },
                 success: function(response){
-                    toastr: success(response.message);
+                    toastr.success(response.message);
                 },
                 error: function(){
 
                 }
             });
+
         });
     });
 </script>
