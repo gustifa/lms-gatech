@@ -7,6 +7,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CourseController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -88,6 +89,17 @@ Route::middleware(['auth','role:instructor'])->group(function(){
 
     Route::get('/instructor/change/password', [InstructorController::class, 'InstructorPassword'])->name('instructor.password');
     Route::post('/instructor/update/password', [InstructorController::class, 'InstructorUpdatePassword'])->name('instructor.update.password');
+
+    // Course Group Middleware
+    Route::controller(CourseController::class)->group(function(){
+        Route::get('/course/all', 'AllCourse')->name('all.course');
+        Route::get('/course/add', 'AddCourse')->name('add.course');
+        Route::post('/course/store', 'StoreCourse')->name('store.course');
+        Route::get('/course/edit/{id}', 'EditCourse')->name('edit.course');
+        Route::post('/course/update', 'UpdateCourse')->name('update.course');
+        Route::get('/course/delete/{id}', 'DeleteCourse')->name('delete.course');
+
+    });
 
 });
 
