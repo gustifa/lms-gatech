@@ -1,5 +1,11 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+    .large-chexbox{
+        transform: scale(1.5);
+    }
+</style>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -44,10 +50,10 @@
                             <th>Instructor Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            
+
                             <th>Status</th>
                             <th>Action</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +63,7 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->phone}}</td>
-                            
+
                             <td>
                                 @if ($item->status == 1)
                                     <span class="btn btn-success">Active</span>
@@ -66,10 +72,12 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="" class="px-2 btn btn-primary">Edit</a>
-                                <a href="" id="delete" class="px-2 btn btn-danger">Delete</a>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input large-chexbox status-toggle" type="checkbox" role="switch" id="flexSwitchCheckDefault1" data-user-id="{{$item->id}}" {{$item->status ? 'checked' : ''}} >
+                                    <label class="form-check-label" for="flexSwitchCheckDefault1"></label>
+                                  </div>
                             </td>
-                            
+
                         </tr>
                         @endforeach
 
@@ -82,6 +90,32 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.status-toggle').on('change', function(){
+            var userId = $(this).data('user-id');
+            var isChecked = $(this).is(':checked');
+
+            // Send Ajax Request to Update Status
+            $.ajax({
+                url: {{route('update.user.status')}},
+                method: "POST",
+                data: {
+                    user_id : userId,
+                    is_checked: isChecked ? 1 : 0,
+                    _token: "{{csrf_token}}",
+                },
+                success: function(response){
+                    toastr: success(response.message);
+                },
+                error: function(){
+
+                }
+            });
+        });
+    });
+</script>
 
 
 @endsection

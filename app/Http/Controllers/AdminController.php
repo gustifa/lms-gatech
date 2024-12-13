@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function AdminLogin(){
         return view('admin.admin_login');
     }
-    
+
     public function AdminProfile(){
         $id = Auth::user()->id;
         $profileData = User::find($id);
@@ -88,7 +88,7 @@ class AdminController extends Controller
         return back()->with($notification);
 
 
-        
+
 
     }
 
@@ -128,4 +128,15 @@ class AdminController extends Controller
         $allInstructor = User::where('role', 'instructor')->latest()->get();
         return view('admin.backend.instructor.all_instructor', compact('allInstructor'));
     }/* End Method */
+
+    public function UpdateUserStatus(Request $request){
+        $userId = $request->input('user_id');
+        $isChecked = $request->input('is_checked', 0);
+        $user = User::find($userId);
+        if ($user) {
+            $user->status =  $isChecked;
+            $user->save();
+        }
+        return response()->json(['message', 'User Succesfully Update']);
+    }
 }
