@@ -3,10 +3,10 @@
 
 <div class="page-content">
     <!--breadcrumb-->
-    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+    <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
         <div class="ps-3">
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0 p-0">
+                <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">All Course</li>
@@ -15,7 +15,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-           <a href="{{ route('add.course') }}" class="btn btn-primary px-5">Add Course </a>
+           <a href="{{ route('add.course') }}" class="px-5 btn btn-primary">Add Course </a>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
                             <td>
        <a href="{{ route('edit.course',$item->id) }}" class="btn btn-info" title="Edit"><i class="lni lni-eraser"></i> </a>
        <a href="{{ route('delete.course',$item->id) }}" class="btn btn-danger" id="delete" title="delete"><i class="lni lni-trash"></i> </a>
-       <a href="{{ route('add.course.lecture',$item->id) }}" class="btn btn-warning" title="Lecture"><i class="lni lni-list"></i> </a>
+       <a href="" class="btn btn-warning" title="Lecture"><i class="lni lni-list"></i> </a>
                             </td>
                         </tr>
                         @endforeach

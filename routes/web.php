@@ -94,10 +94,16 @@ Route::middleware(['auth','role:instructor'])->group(function(){
     Route::controller(CourseController::class)->group(function(){
         Route::get('/course/all', 'AllCourse')->name('all.course');
         Route::get('/course/add', 'AddCourse')->name('add.course');
+
+        Route::get('/subcategory/ajax/{category_id}','GetSubCategory');
+
         Route::post('/course/store', 'StoreCourse')->name('store.course');
         Route::get('/course/edit/{id}', 'EditCourse')->name('edit.course');
         Route::post('/course/update', 'UpdateCourse')->name('update.course');
         Route::get('/course/delete/{id}', 'DeleteCourse')->name('delete.course');
+        Route::post('/update/course/image','UpdateCourseImage')->name('update.course.image');
+        Route::post('/update/course/video','UpdateCourseVideo')->name('update.course.video');
+        Route::post('/update/course/goal','UpdateCourseGoal')->name('update.course.goal');
 
     });
 
