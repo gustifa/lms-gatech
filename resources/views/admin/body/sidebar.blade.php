@@ -19,11 +19,12 @@
             </a>
 
         </li>
+        <li class="menu-label">Manage</li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Manage Category</div>
+                <div class="menu-title">Category</div>
             </a>
             <ul>
                 <li> <a href="{{route('all.category')}}"><i class='bx bx-radio-circle'></i>All Category</a>
@@ -47,7 +48,7 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Manage SubCategory</div>
+                <div class="menu-title">SubCategory</div>
             </a>
             <ul>
                 <li> <a href="{{route('all.subcategory')}}"><i class='bx bx-radio-circle'></i>All SubCategory</a>
@@ -61,7 +62,7 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-user"></i>
                 </div>
-                <div class="menu-title">Manage Insturctor</div>
+                <div class="menu-title">Insturctor</div>
             </a>
             <ul>
                 <li> <a href="{{route('all.instructor')}}"><i class='bx bx-list-ul'></i>All Instructor</a>
