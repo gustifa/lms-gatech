@@ -59,14 +59,14 @@
 
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
+                <div class="parent-icon"><i class="bx bx-user"></i>
                 </div>
                 <div class="menu-title">Manage Insturctor</div>
             </a>
             <ul>
-                <li> <a href="{{route('all.instructor')}}"><i class='bx bx-radio-circle'></i>All Instructor</a>
+                <li> <a href="{{route('all.instructor')}}"><i class='bx bx-list-ul'></i>All Instructor</a>
                 </li>
-                <li> <a href="{{route('add.instructor')}}"><i class='bx bx-radio-circle'></i>Add Instructor</a>
+                <li> <a href="{{route('add.instructor')}}"><i class='bx bx-add-to-queue'></i>Add Instructor</a>
                 </li>
             </ul>
         </li>
@@ -365,7 +365,7 @@
 
         <li>
             <a href="{{route('admin.logout')}}">
-                <div class="parent-icon"><i class="bx bx-support"></i>
+                <div class="parent-icon"><i class="bx bx-log-out"></i>
                 </div>
                 <div class="menu-title">Logout</div>
             </a>
