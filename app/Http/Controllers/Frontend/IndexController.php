@@ -20,6 +20,9 @@ class IndexController extends Controller
     public function CourseDetails($id, $slug){
         $course = Course::find($id);
         $goals = Course_goal::where('course_id', $id)->orderBy('id','DESC')->get();
-        return view('frontend.course.course_details', compact('course', 'goals'));
+
+        $instructor_id = $course->instructor_id;
+        $instructor_course = Course::where('instructor_id',$instructor_id)->orderBy('id','DESC')->limit(5)->get();
+        return view('frontend.course.course_details', compact('course', 'goals', 'instructor_course'));
     }
 }
