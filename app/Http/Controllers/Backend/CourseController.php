@@ -204,6 +204,35 @@ class CourseController extends Controller
 
     }
 
+    public function UpdateCourseGoal(Request $request){
+
+        $cid = $request->id;
+
+        if ($request->course_goals == NULL) {
+            return redirect()->back();
+        } else{
+
+            Course_goal::where('course_id',$cid)->delete();
+
+            $goles = Count($request->course_goals);
+
+                for ($i=0; $i < $goles; $i++) {
+                    $gcount = new Course_goal();
+                    $gcount->course_id = $cid;
+                    $gcount->goal_name = $request->course_goals[$i];
+                    $gcount->save();
+                }  // end for
+        } // end else
+
+        $notification = array(
+            'message' => 'Course Goals Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }// End Method
+
+
     public function DeleteCourse($id){
         $course = Course::find($id);
         unlink($course->course_image);
