@@ -100,7 +100,7 @@ Route::middleware(['auth','role:instructor'])->group(function(){
         Route::get('/course/add', 'AddCourse')->name('add.course');
 
         Route::get('/subcategory/ajax/{category_id}','GetSubCategory');
-
+        Route::post('/save-lecture','SaveLecture')->name('save-lecture');
         Route::post('/course/store', 'StoreCourse')->name('store.course');
         Route::get('/course/edit/{id}', 'EditCourse')->name('edit.course');
         Route::post('/course/update', 'UpdateCourse')->name('update.course');
@@ -115,7 +115,6 @@ Route::middleware(['auth','role:instructor'])->group(function(){
     Route::controller(CourseController::class)->group(function(){
     Route::get('/course/lecture/add/{id}','AddCourseLecture')->name('add.course.lecture');
     Route::post('/course/section/add','AddCourseSection')->name('add.course.section');
-
 
     Route::get('/edit/lecture/{id}','EditLecture')->name('edit.lecture');
     Route::post('/update/course/lecture','UpdateCourseLecture')->name('update.course.lecture');
