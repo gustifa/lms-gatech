@@ -57,7 +57,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="index.html" class="logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
+                            <a href="{{route('index')}}" class="logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="mr-2 shadow-sm search-menu-toggle icon-element icon-element-sm" data-toggle="tooltip" data-placement="top" title="Search">
                                     <i class="la la-search"></i>
@@ -79,10 +79,16 @@
                                         <a href="#">Categories <i class="la la-angle-down fs-12"></i></a>
                                         <ul class="cat-dropdown-menu">
                                             @foreach ($catgories as $category)
+                                            @php
+                                                $subCategory = App\Models\SubCategory::where('category_id', $category->id)->orderBy('id','ASC')->get();
+                                            @endphp
                                                 <li>
                                                     <a href="course-grid.html">{{$category->category_name}} <i class="la la-angle-right"></i></a>
                                                     <ul class="sub-menu">
-                                                        <li><a href="#">All Development</a></li>
+                                                        @foreach ($subCategory as $item)
+                                                            <li><a href="#">{{$item->subcategory_name}}</a></li>
+                                                        @endforeach
+
 
                                                     </ul>
                                                 </li>
@@ -110,8 +116,10 @@
                                             <li><a href="home-4.html">Home four</a></li>
                                         </ul>
                                     </li>
+
                                     <li>
                                         <a href="#">courses <i class="la la-angle-down fs-12"></i></a>
+
                                         <ul class="dropdown-menu-item">
                                             <li><a href="course-grid.html">course grid</a></li>
                                             <li><a href="course-list.html">course list</a></li>

@@ -152,7 +152,7 @@
             <div class="card card-item">
                 <div class="card-body">
                     <p class="pb-2 card-text">By <a href="teacher-detail.html">{{$item['user']['name']}}</a></p>
-                    <h5 class="pb-1 card-title"><a href="">{{$item->course_name}}</a></h5>
+                    <h5 class="pb-1 card-title"><a href="{{url('course/details/'.$item->id.'/'.$item->course_name_slug)}}">{{$item->course_name}}</a></h5>
                     <div class="pb-1 d-flex align-items-center">
                         @if ($item->bestseller == 1)
                             <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
