@@ -18,7 +18,11 @@
                     <p class="pt-2 section__desc lh-30">{{$course->course_title}}</p>
                 </div><!-- end section-heading -->
                 <div class="flex-wrap pt-3 d-flex align-items-center">
-                    <h6 class="mr-2 text-white ribbon ribbon-lg bg-3">Bestseller</h6>
+                    @if ($course->bestseller == 1)
+                        <h6 class="mr-2 text-white ribbon ribbon-lg bg-3">Bestseller</h6>
+                    @else
+                    @endif
+
                     <div class="flex-wrap rating-wrap d-flex align-items-center">
                         <div class="review-stars">
                             <span class="rating-number">4.4</span>
@@ -998,4 +1002,109 @@
 ======================================-->
 
 <div class="section-block"></div>
+
+<!-- Modal -->
+<div class="modal fade modal-container" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-gray">
+                <h5 class="modal-title fs-19 font-weight-semi-bold" id="shareModalTitle">Share this course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-times"></span>
+                </button>
+            </div><!-- end modal-header -->
+            <div class="modal-body">
+                <div class="copy-to-clipboard">
+                    <span class="success-message">Copied!</span>
+                    <div class="input-group">
+                        <input type="text" class="pl-3 form-control form--control copy-input" value="{{route('index')}}/{{Request::path()}}">
+                        <div class="input-group-append">
+                            <button class="shadow-none btn theme-btn theme-btn-sm copy-btn"><i class="mr-1 la la-copy"></i> Copy</button>
+                        </div>
+                    </div>
+                </div><!-- end copy-to-clipboard -->
+            </div><!-- end modal-body -->
+            <div class="modal-footer justify-content-center border-top-gray">
+                <ul class="social-icons social-icons-styled">
+                    <li><a href="#" class="facebook-bg"><i class="la la-facebook"></i></a></li>
+                    <li><a href="#" class="twitter-bg"><i class="la la-twitter"></i></a></li>
+                    <li><a href="#" class="instagram-bg"><i class="la la-instagram"></i></a></li>
+                </ul>
+            </div><!-- end modal-footer -->
+        </div><!-- end modal-content-->
+    </div><!-- end modal-dialog -->
+</div><!-- end modal -->
+
+<!-- Modal -->
+<div class="modal fade modal-container" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-gray">
+                <div class="pr-2">
+                    <p class="pb-2 font-weight-semi-bold">Course Preview</p>
+                    <h5 class="modal-title fs-19 font-weight-semi-bold lh-24" id="previewModalTitle">Java Programming Masterclass for Software Developers</h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-times"></span>
+                </button>
+            </div><!-- end modal-header -->
+            <div class="modal-body">
+                <video controls crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
+                    <!-- Video files -->
+                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4"/>
+                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4"/>
+                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4"/>
+                </video>
+            </div><!-- end modal-body -->
+        </div><!-- end modal-content -->
+    </div><!-- end modal-dialog -->
+</div><!-- end modal -->
+
+<!-- Modal -->
+<div class="modal fade modal-container" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-gray">
+                <div class="pr-2">
+                    <h5 class="modal-title fs-19 font-weight-semi-bold lh-24" id="reportModalTitle">Report Abuse</h5>
+                    <p class="pt-1 fs-14 lh-24">Flagged content is reviewed by Aduca staff to determine whether it violates Terms of Service or Community Guidelines. If you have a question or technical issue, please contact our
+                        <a href="contact.html" class="text-color hover-underline">Support team here</a>.</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-times"></span>
+                </button>
+            </div><!-- end modal-header -->
+            <div class="modal-body">
+                <form method="post">
+                    <div class="input-box">
+                        <label class="label-text">Select Report Type</label>
+                        <div class="form-group">
+                            <div class="w-auto select-container">
+                                <select class="select-container-select">
+                                    <option value>-- Select One --</option>
+                                    <option value="1">Inappropriate Course Content</option>
+                                    <option value="2">Inappropriate Behavior</option>
+                                    <option value="3">Aduca Policy Violation</option>
+                                    <option value="4">Spammy Content</option>
+                                    <option value="5">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label class="label-text">Write Message</label>
+                        <div class="form-group">
+                            <textarea class="pl-3 form-control form--control" name="message" placeholder="Provide additional details here..." rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="pt-2 text-right btn-box">
+                        <button type="button" class="mr-3 btn font-weight-medium" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn theme-btn theme-btn-sm lh-30">Submit <i class="ml-1 la la-arrow-right icon"></i></button>
+                    </div>
+                </form>
+            </div><!-- end modal-body -->
+        </div><!-- end modal-content -->
+    </div><!-- end modal-dialog -->
+</div><!-- end modal -->
+
 @endsection
