@@ -43,7 +43,7 @@
                                     </div><!-- end card-image -->
                                     <div class="card-body">
                                         <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">{{$course->label}}</h6>
-                                        <h5 class="card-title"><a href="course-details.html">The Business Intelligence Analyst Course 2021</a></h5>
+                                        <h5 class="card-title"><a href="{{url('course/details/'.$course->id.'/'.$course->course_name_slug)}}">The Business Intelligence Analyst Course 2021</a></h5>
                                         <p class="card-text"><a href="teacher-detail.html">{{$course['user']['name']}}</a></p>
                                         <div class="py-2 rating-wrap d-flex align-items-center">
                                             <div class="review-stars">
@@ -86,7 +86,7 @@
                                 <div class="col-lg-4 responsive-column-half">
                                     <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1{{$course->id}}">
                                         <div class="card-image">
-                                            <a href="course-details.html" class="d-block">
+                                            <a href="{{url('course/details/'.$course->id.'/'.$course->course_name_slug)}}" class="d-block">
                                                 <img class="card-img-top lazy" src="{{asset($course->course_image)}}" data-src="{{asset($course->course_image)}}" alt="Card image cap">
                                             </a>
                                             <div class="course-badge-labels">
@@ -96,7 +96,7 @@
                                         </div><!-- end card-image -->
                                         <div class="card-body">
                                             <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">{{$course->label}}</h6>
-                                            <h5 class="card-title"><a href="course-details.html">The Business Intelligence Analyst Course 2021</a></h5>
+                                            <h5 class="card-title"><a href="{{url('course/details/'.$course->id.'/'.$course->course_name_slug)}}">The Business Intelligence Analyst Course 2021</a></h5>
                                             <p class="card-text"><a href="teacher-detail.html">{{$course['user']['name']}}</a></p>
                                             <div class="py-2 rating-wrap d-flex align-items-center">
                                                 <div class="review-stars">
@@ -152,7 +152,7 @@
             <div class="card card-item">
                 <div class="card-body">
                     <p class="pb-2 card-text">By <a href="teacher-detail.html">{{$item['user']['name']}}</a></p>
-                    <h5 class="pb-1 card-title"><a href="course-details.html">{{$item->course_name}}</a></h5>
+                    <h5 class="pb-1 card-title"><a href="">{{$item->course_name}}</a></h5>
                     <div class="pb-1 d-flex align-items-center">
                         @if ($item->bestseller == 1)
                             <h6 class="mr-2 ribbon fs-14">Bestseller</h6>

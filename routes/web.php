@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Frontend\IndexController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -30,12 +31,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-// Login Admin
+// Route Accessable for ALl
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
 Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
 Route::post('/become/instructor/register', [AdminController::class, 'BecomeInstructorRegister'])->name('become.instructor.register');
 
+Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails'])->name('course.details');
+
+// Route End Accessable for ALl
 
 
 // Admin Group Middleware
@@ -109,8 +113,8 @@ Route::middleware(['auth','role:instructor'])->group(function(){
 
     // Course Section and Lecture All Route
     Route::controller(CourseController::class)->group(function(){
-    Route::get('/add/course/lecture/{id}','AddCourseLecture')->name('add.course.lecture');
-    Route::post('/add/course/section/','AddCourseSection')->name('add.course.section');
+    Route::get('/course/lecture/add/{id}','AddCourseLecture')->name('add.course.lecture');
+    Route::post('/course/section/add','AddCourseSection')->name('add.course.section');
 
 
     Route::get('/edit/lecture/{id}','EditLecture')->name('edit.lecture');
