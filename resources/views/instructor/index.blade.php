@@ -5,14 +5,15 @@
   $id = Auth::user()->id;
   $instructorId = App\Models\User::find($id);
   $status = $instructorId->status;
+  $course = App\Models\Course::where('instructor_id',$id )->get();
 @endphp
 
 <div class="page-content">
   
   @if ($status === '1')
-  <h4>Instructor Account Is <span class="text-success">Active</span> </h4>
+  <h4>Account Is <b>{{ $instructorId->name}} </b><span class="text-success">Active</span> </h4>
   @else   
-  <h4>Instructor Account Is <span class="text-danger">InActive</span> </h4> 
+  <h4>Account Is <b>{{ $instructorId->name}} <span class="text-danger">InActive</span> </h4> 
  <p class="text-danger"><b> Please wait admin will check and approve your account</b> </p>
   @endif
 
@@ -22,9 +23,11 @@
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
-                        <p class="mb-0 text-secondary">Total Orders</p>
-                        <h4 class="my-1 text-info">4805</h4>
-                        <p class="mb-0 font-13">+2.5% from last week</p>
+                        
+                        <p class="mb-0 text-secondary">Total Course</p>
+                        <h4 class="my-1 text-info">{{count($course)}}</h4>
+                        <p class="mb-0 font-13"><a href="{{route('all.course')}}">Detail Data</a></p>
+                        
                     </div>
                     <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i class='bx bxs-cart'></i>
                     </div>
