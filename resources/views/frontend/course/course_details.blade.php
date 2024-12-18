@@ -687,6 +687,11 @@
                                     </div>
                                 </a>
                             </div><!-- end preview-course-video -->
+
+                            @php
+                                $amount = $course->selling_price - $course->discount_price;
+                                $discount = ($amount/$course->selling_price) * 100;
+                            @endphp
                             <div class="preview-course-feature-content pt-40px">
                                 <p class="pb-2 d-flex align-items-center">
                                     <span class="text-black fs-35 font-weight-semi-bold">{{$course->selling_price}}</span>
