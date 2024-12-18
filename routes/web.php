@@ -40,6 +40,7 @@ Route::post('/become/instructor/register', [AdminController::class, 'BecomeInstr
 Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails'])->name('course.details');
 Route::get('/category/{id}/{slug}', [IndexController::class, 'CategoryCourse'])->name('category.course');
 Route::get('/subcategory/{id}/{slug}', [IndexController::class, 'SubCategoryCourse']);
+Route::get('/instructor/details/{id}', [IndexController::class, 'InstructorDetails'])->name('instructor.details');
 
 // Route End Accessable for ALl
 

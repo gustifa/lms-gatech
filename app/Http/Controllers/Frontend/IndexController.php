@@ -13,6 +13,7 @@ use App\Models\CourseLecture;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Carbon\Carbon;
 
 class IndexController extends Controller
@@ -45,5 +46,13 @@ class IndexController extends Controller
         $subcategory = SubCategory::where('id',$id)->first();
         $categories = Category::latest()->get();
         return view('frontend.category.subcategory_all',compact('courses','subcategory','categories'));
+    }// End Method
+
+    public function InstructorDetails($id){
+
+        $instructor = User::find($id);
+        $courses = Course::where('instructor_id',$id)->get();
+        return view('frontend.instructor.instructor_details',compact('instructor','courses'));
+
     }// End Method
 }
