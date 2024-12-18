@@ -694,9 +694,15 @@
                             @endphp
                             <div class="preview-course-feature-content pt-40px">
                                 <p class="pb-2 d-flex align-items-center">
-                                    <span class="text-black fs-35 font-weight-semi-bold">{{$course->selling_price}}</span>
-                                    <span class="mx-1 before-price">$104.99</span>
-                                    <span class="price-discount">24% off</span>
+                                    @if ($course->discount_price == NULL)
+                                        <span class="text-black fs-30 font-weight-semi-bold">IDR{{$course->selling_price}}</span>
+                                    @else
+                                        <span class="text-black fs-30 font-weight-semi-bold">IDR{{$course->discount_price}}</span>
+                                        <span class="mx-1 before-price">IDR{{$course->selling_price}}</span>
+
+                                    @endif
+                                    <span class="price-discount">{{round($discount)}}% Off</span>
+
                                 </p>
                                 <p class="preview-price-discount-text pb-35px">
                                     <span class="text-color-3">4 days</span> left at this price!
@@ -709,7 +715,7 @@
                                 <div class="preview-course-incentives">
                                     <h3 class="pb-2 card-title fs-18">This course includes</h3>
                                     <ul class="pb-3 generic-list-item">
-                                        <li><i class="mr-2 la la-play-circle-o text-color"></i>2.5 hours on-demand video</li>
+                                        <li><i class="mr-2 la la-play-circle-o text-color"></i>{{$course->duration}} hours on-demand video</li>
                                         <li><i class="mr-2 la la-file text-color"></i>34 articles</li>
                                         <li><i class="mr-2 la la-file-text text-color"></i>12 downloadable resources</li>
                                         <li><i class="mr-2 la la-code text-color"></i>51 coding exercises</li>
@@ -738,9 +744,9 @@
                                 <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-bolt text-color"></i>Quizzes</span> 26</li>
                                 <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-eye text-color"></i>Preview Lessons</span> 4</li>
                                 <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-language text-color"></i>Language</span> English</li>
-                                <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-lightbulb text-color"></i>Skill level</span> All levels</li>
+                                <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-lightbulb text-color"></i>Skill level</span> {{$course->label}}</li>
                                 <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-users text-color"></i>Students</span> 30,506</li>
-                                <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-certificate text-color"></i>Certificate</span> Yes</li>
+                                <li class="d-flex align-items-center justify-content-between"><span><i class="mr-2 la la-certificate text-color"></i>Certificate</span> {{$course->certificate}}</li>
                             </ul>
                         </div>
                     </div><!-- end card -->
@@ -749,14 +755,10 @@
                             <h3 class="pb-2 card-title fs-18">Course Categories</h3>
                             <div class="divider"><span></span></div>
                             <ul class="generic-list-item">
-                                <li><a href="#">Development</a></li>
-                                <li><a href="#">Web Design</a></li>
-                                <li><a href="#">Technology</a></li>
-                                <li><a href="#">IT & Software</a></li>
-                                <li><a href="#">Backend</a></li>
-                                <li><a href="#">Marketing</a></li>
-                                <li><a href="#">Photography</a></li>
-                                <li><a href="#">Frontend</a></li>
+                                @foreach ($categories as $category)
+                                <li><a href="#">{{$category->category_name}}</a></li>
+                                @endforeach
+
                             </ul>
                         </div>
                     </div><!-- end card -->
@@ -764,36 +766,24 @@
                         <div class="card-body">
                             <h3 class="pb-2 card-title fs-18">Related Courses</h3>
                             <div class="divider"><span></span></div>
-                            <div class="pb-4 mb-4 media media-card border-bottom border-bottom-gray">
-                                <a href="course-details.html" class="media-img">
-                                    <img class="mr-3 lazy" src="images/img-loading.png" data-src="images/small-img-2.jpg" alt="Related course image">
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="fs-15"><a href="course-details.html">The Complete JavaScript Course 2021</a></h5>
-                                    <span class="py-1 d-block lh-18 fs-14">Kamran Ahmed</span>
-                                    <p class="text-black font-weight-semi-bold lh-18 fs-15">$12.99 <span class="before-price fs-14">$129.99</span></p>
-                                </div>
-                            </div><!-- end media -->
-                            <div class="pb-4 mb-4 media media-card border-bottom border-bottom-gray">
-                                <a href="course-details.html" class="media-img">
-                                    <img class="mr-3 lazy" src="images/img-loading.png" data-src="images/small-img-3.jpg" alt="Related course image">
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="fs-15"><a href="course-details.html">Learning jQuery Mobile for Beginners</a></h5>
-                                    <span class="py-1 d-block lh-18 fs-14">Kamran Ahmed</span>
-                                    <p class="text-black font-weight-semi-bold lh-18 fs-15">$129.99</p>
-                                </div>
-                            </div><!-- end media -->
-                            <div class="pb-4 mb-4 media media-card border-bottom border-bottom-gray">
-                                <a href="course-details.html" class="media-img">
-                                    <img class="mr-3 lazy" src="images/img-loading.png" data-src="images/small-img-4.jpg" alt="Related course image">
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="fs-15"><a href="course-details.html">Introduction LearnPress – LMS plugin</a></h5>
-                                    <span class="py-1 d-block lh-18 fs-14">Kamran Ahmed</span>
-                                    <p class="text-black font-weight-semi-bold lh-18 fs-15">Free</p>
-                                </div>
-                            </div><!-- end media -->
+                            @foreach ($relatedCourses as $item)
+
+                                <div class="pb-4 mb-4 media media-card border-bottom border-bottom-gray">
+                                    <a href="course-details.html" class="media-img">
+                                        <img class="mr-3 lazy" src="{{asset($item->course_image)}}" data-src="{{asset($item->course_image)}}" alt="Related course image">
+                                    </a>
+                                    <div class="media-body">
+                                        <h5 class="fs-15"><a href="course-details.html">{{$item->course_name}}</a></h5>
+                                        <span class="py-1 d-block lh-18 fs-14">{{$item['user']['name']}}</span>
+                                        @if ($item->discount_price == NULL)
+                                            <p class="text-black font-weight-semi-bold lh-18 fs-15">IDR{{$item->selling_price}}</p>
+                                        @else
+                                            <p class="text-black font-weight-semi-bold lh-18 fs-15">IDR{{$item->discount_price}} <span class="before-price fs-14">IDR{{$item->selling_price}}</span></p>
+                                        @endif
+
+                                    </div>
+                                </div><!-- end media -->
+                            @endforeach
                             <div class="view-all-course-btn-box">
                                 <a href="course-grid.html" class="btn theme-btn w-100">View All Courses <i class="ml-1 la la-arrow-right icon"></i></a>
                             </div>
