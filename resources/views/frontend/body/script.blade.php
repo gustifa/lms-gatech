@@ -59,7 +59,7 @@
         $.ajax({
             type: "GET",
             dataType: 'json',
-            url: "/get-wishlist-course/",
+            url: "/get-wishlist-course",
 
             success:function(response){
 
