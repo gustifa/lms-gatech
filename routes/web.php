@@ -31,18 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-// Route Accessable for ALl
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
-Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
-Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
-Route::post('/become/instructor/register', [AdminController::class, 'BecomeInstructorRegister'])->name('become.instructor.register');
 
-Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails'])->name('course.details');
-Route::get('/category/{id}/{slug}', [IndexController::class, 'CategoryCourse'])->name('category.course');
-Route::get('/subcategory/{id}/{slug}', [IndexController::class, 'SubCategoryCourse']);
-Route::get('/instructor/details/{id}', [IndexController::class, 'InstructorDetails'])->name('instructor.details');
-
-// Route End Accessable for ALl
 
 
 // Admin Group Middleware
@@ -132,6 +121,19 @@ Route::middleware(['auth','role:instructor'])->group(function(){
 Route::middleware(['auth','role:user'])->group(function(){
 
 });
+
+// Route Accessable for ALl
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login');
+Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
+Route::post('/become/instructor/register', [AdminController::class, 'BecomeInstructorRegister'])->name('become.instructor.register');
+
+Route::get('/course/details/{id}/{slug}', [IndexController::class, 'CourseDetails'])->name('course.details');
+Route::get('/category/{id}/{slug}', [IndexController::class, 'CategoryCourse'])->name('category.course');
+Route::get('/subcategory/{id}/{slug}', [IndexController::class, 'SubCategoryCourse']);
+Route::get('/instructor/details/{id}', [IndexController::class, 'InstructorDetails'])->name('instructor.details');
+
+// Route End Accessable for ALl
 
 
 
