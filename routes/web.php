@@ -19,8 +19,7 @@ Route::get('/', [UserController::class, 'Index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+})->middleware(['auth', 'role:admin', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/user/profile',[UserController::class, 'UserProfile'])->name('user.profile');
     Route::post('/user/profile/update',[UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
@@ -29,13 +28,20 @@ Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::controller(WishListController::class)->group(function(){
+        Route::get('/user/wishlist','AllWishlist')->name('user.wishlist');
+        Route::get('/get-wishlist-course','GetWishlistCourse');
+        Route::get('/wishlist-remove/{id}','RemoveWishlist');
+    });
+
 });
 
 require __DIR__.'/auth.php';
 
 
 
-// Admin Group Middleware
+// Awal Admin Group Middleware
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
@@ -74,10 +80,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     });
 
+}); ///Akhir Admin Group Middleware
 
-});
-
-// Instructor Group Middleware
+// Awal Instructor Group Middleware
 Route::middleware(['auth','role:instructor'])->group(function(){
     Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
     Route::get('/instructor/logout', [InstructorController::class, 'InstructorLogout'])->name('instructor.logout');
@@ -106,28 +111,23 @@ Route::middleware(['auth','role:instructor'])->group(function(){
 
     // Course Section and Lecture All Route
     Route::controller(CourseController::class)->group(function(){
-    Route::get('/course/lecture/add/{id}','AddCourseLecture')->name('add.course.lecture');
-    Route::post('/course/section/add','AddCourseSection')->name('add.course.section');
+        Route::get('/course/lecture/add/{id}','AddCourseLecture')->name('add.course.lecture');
+        Route::post('/course/section/add','AddCourseSection')->name('add.course.section');
 
-    Route::get('/edit/lecture/{id}','EditLecture')->name('edit.lecture');
-    Route::post('/update/course/lecture','UpdateCourseLecture')->name('update.course.lecture');
-    Route::get('/delete/lecture/{id}','DeleteLecture')->name('delete.lecture');
-    Route::post('/delete/section/{id}','DeleteSection')->name('delete.section');
-});
+        Route::get('/edit/lecture/{id}','EditLecture')->name('edit.lecture');
+        Route::post('/update/course/lecture','UpdateCourseLecture')->name('update.course.lecture');
+        Route::get('/delete/lecture/{id}','DeleteLecture')->name('delete.lecture');
+        Route::post('/delete/section/{id}','DeleteSection')->name('delete.section');
+    });
 
 
-});
+}); ///Akhir Instructor Group Middleware
+
+
 
 // User Group Middleware
 Route::middleware(['auth','role:user'])->group(function(){
         // User Wishlist All Route
-    Route::controller(WishListController::class)->group(function(){
-    Route::get('/user/wishlist','AllWishlist')->name('user.wishlist');
-    Route::get('/get-wishlist-course','GetWishlistCourse');
-    Route::get('/wishlist-remove/{id}','RemoveWishlist');
-
-
-});
 
 });
 
