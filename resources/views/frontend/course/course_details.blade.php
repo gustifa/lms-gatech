@@ -669,7 +669,7 @@
                         <div class="card-body">
                             <div class="preview-course-video">
                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#previewModal">
-                                    <img src="images/img-loading.png" data-src="images/preview-img.jpg" alt="course-img" class="rounded w-100 lazy">
+                                    <img src="{{asset($course->course_image)}}" data-src="{{asset($course->course_image)}}" alt="course-img" class="rounded w-100 lazy">
                                     <div class="preview-course-video-content">
                                         <div class="overlay"></div>
                                         <div class="play-button">
@@ -689,7 +689,7 @@
                             </div><!-- end preview-course-video -->
                             <div class="preview-course-feature-content pt-40px">
                                 <p class="pb-2 d-flex align-items-center">
-                                    <span class="text-black fs-35 font-weight-semi-bold">$76.99</span>
+                                    <span class="text-black fs-35 font-weight-semi-bold">{{$course->selling_price}}</span>
                                     <span class="mx-1 before-price">$104.99</span>
                                     <span class="price-discount">24% off</span>
                                 </p>
@@ -958,11 +958,10 @@
                 </button>
             </div><!-- end modal-header -->
             <div class="modal-body">
-                <video controls crossorigin playsinline poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg" id="player">
+                <video controls crossorigin playsinline poster="{{asset($course->course_image)}}" id="player">
                     <!-- Video files -->
-                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4"/>
-                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4"/>
-                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4"/>
+                    <source src="{{asset($course->video)}}" type="video/mp4"/>
+
                 </video>
             </div><!-- end modal-body -->
         </div><!-- end modal-content -->
