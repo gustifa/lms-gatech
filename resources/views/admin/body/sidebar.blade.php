@@ -71,6 +71,31 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-user"></i>
+                </div>
+                <div class="menu-title">Coupon</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('admin.all.coupon')}}"><i class='bx bx-list-ul'></i>All Coupon</a>
+                </li>
+                
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-user"></i>
+                </div>
+                <div class="menu-title">Course</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('admin.all.course')}}"><i class='bx bx-list-ul'></i>All Course</a>
+                </li>
+                
+            </ul>
+        </li>
         {{-- <li class="menu-label">UI Elements</li>
         <li>
             <a href="widgets.html">

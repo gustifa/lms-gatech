@@ -10,6 +10,9 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
+use App\Http\Controllers\Frontend\CartController;
+
+use App\Http\Controllers\Backend\CouponController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -80,6 +83,25 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     });
 
+    // Admin Coruses All Route 
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin/all/course','AdminAllCourse')->name('admin.all.course');
+    Route::post('/update/course/stauts','UpdateCourseStatus')->name('update.course.stauts');
+    Route::get('/admin/course/details/{id}','AdminCourseDetails')->name('admin.course.details');
+   
+});
+
+    // Admin Coupon All Route 
+    Route::controller(CouponController::class)->group(function(){
+        Route::get('/admin/all/coupon','AdminAllCoupon')->name('admin.all.coupon');
+        Route::get('/admin/add/coupon','AdminAddCoupon')->name('admin.add.coupon');
+        Route::post('/admin/store/coupon','AdminStoreCoupon')->name('admin.store.coupon');
+        Route::get('/admin/edit/coupon/{id}','AdminEditCoupon')->name('admin.edit.coupon');
+        Route::post('/admin/update/coupon','AdminUpdateCoupon')->name('admin.update.coupon');
+        Route::get('/admin/delete/coupon/{id}','AdminDeleteCoupon')->name('admin.delete.coupon'); 
+
+    });
+
 }); ///Akhir Admin Group Middleware
 
 // Awal Instructor Group Middleware
@@ -144,6 +166,37 @@ Route::get('/instructor/details/{id}', [IndexController::class, 'InstructorDetai
 
 Route::post('/add-to-wishlist/{course_id}', [WishListController::class, 'AddToWishList']);
 
+Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+Route::post('/buy/data/store/{id}', [CartController::class, 'AddToCart']);
+
+Route::get('/cart/data/', [CartController::class, 'CartData']);
+
+
+// Get Data from Minicart 
+Route::get('/course/mini/cart/', [CartController::class, 'AddMiniCart']);
+Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
+
+
+// Cart All Route 
+Route::controller(CartController::class)->group(function(){
+    Route::get('/mycart','MyCart')->name('mycart');
+    Route::get('/get-cart-course','GetCartCourse');
+    Route::get('/cart-remove/{rowId}','CartRemove');
+    
+});
+
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+Route::post('/inscoupon-apply', [CartController::class, 'InsCouponApply']);
+
+
+Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
+Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
+
+/// Checkout Page Route 
+Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
+
+Route::post('/payment', [CartController::class, 'Payment'])->name('payment');
+Route::post('/stripe_order', [CartController::class, 'StripeOrder'])->name('stripe_order');
 
 // Route End Accessable for ALl
 
