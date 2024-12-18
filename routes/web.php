@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/wishlist-remove/{id}','RemoveWishlist');
     });
 
+    
+
 });
 
 require __DIR__.'/auth.php';
@@ -177,13 +179,7 @@ Route::get('/course/mini/cart/', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 
 
-// Cart All Route 
-Route::controller(CartController::class)->group(function(){
-    Route::get('/mycart','MyCart')->name('mycart');
-    Route::get('/get-cart-course','GetCartCourse');
-    Route::get('/cart-remove/{rowId}','CartRemove');
-    
-});
+
 
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
 Route::post('/inscoupon-apply', [CartController::class, 'InsCouponApply']);
@@ -192,11 +188,21 @@ Route::post('/inscoupon-apply', [CartController::class, 'InsCouponApply']);
 Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
+// Cart All Route 
+Route::controller(CartController::class)->group(function(){
+    Route::get('/mycart','MyCart')->name('mycart');
+    Route::get('/get-cart-course','GetCartCourse');
+    Route::get('/cart-remove/{rowId}','CartRemove');
+    
+});
+
 /// Checkout Page Route 
 Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
 
 Route::post('/payment', [CartController::class, 'Payment'])->name('payment');
 Route::post('/stripe_order', [CartController::class, 'StripeOrder'])->name('stripe_order');
+
+
 
 // Route End Accessable for ALl
 
